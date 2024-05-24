@@ -35,13 +35,13 @@ public class Hero : MonoBehaviour
             Run();
         if (isGrounded && Input.GetButtonDown("Jump"))
             Jump();
-        
+
 
     }
 
     private void Run()
     {
-        if (isGrounded) State= States.run;
+        if (isGrounded) State = States.run;
 
         Vector3 dir = transform.right * Input.GetAxis("Horizontal");
         transform.position = Vector3.MoveTowards(transform.position, transform.position + dir, speed * Time.deltaTime);
@@ -58,7 +58,7 @@ public class Hero : MonoBehaviour
         Collider2D[] collider = Physics2D.OverlapCircleAll(transform.position, 0.3f);
         isGrounded = collider.Length > 1;
 
-        if (!isGrounded ) State = States.jump;
+        if (!isGrounded) State = States.jump;
     }
 
     private States State
