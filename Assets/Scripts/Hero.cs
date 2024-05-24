@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditorInternal;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Hero : MonoBehaviour
 {
@@ -13,14 +14,21 @@ public class Hero : MonoBehaviour
     private Rigidbody2D rb;
     private SpriteRenderer sprite;
     private Animator anim;
-
+    public Slider sl;
+    private PlayerHp ph;
+    private float timer = 3.6f;
+    private bool die = false;
+    public GameObject zoneatack;
+    float timer2 = 0.5f;
 
     private void Awake()
     {
+        ph = sl.GetComponent<PlayerHp>();
 
         rb = GetComponent<Rigidbody2D>();
         sprite = GetComponentInChildren<SpriteRenderer>();
         anim = GetComponent<Animator>();
+        Die();
     }
 
     private void FixedUpdate()
@@ -30,11 +38,25 @@ public class Hero : MonoBehaviour
 
     private void Update()
     {
-        if (isGrounded) State = States.idle;
-        if (Input.GetButton("Horizontal"))
-            Run();
-        if (isGrounded && Input.GetButtonDown("Jump"))
-            Jump();
+        if (!die)
+        {
+            if (isGrounded) State = States.idle;
+            if (Input.GetButton("Horizontal"))
+                Run();
+            if (isGrounded && Input.GetButtonDown("Jump"))
+                Jump();
+        }
+        
+        Die();
+        if (Input.GetKeyDown(KeyCode.Mouse0))
+        {
+            zoneatack.gameObject.transform.localPosition = new Vector3(1.1f,0.94f,0);
+        }
+        else
+        {
+            zoneatack.gameObject.transform.localPosition = new Vector3(0, 0.94f, 0);
+        }
+        
 
 
     }
@@ -60,11 +82,36 @@ public class Hero : MonoBehaviour
 
         if (!isGrounded) State = States.jump;
     }
+    private async void Die()
+    {
+        if (ph.Hp <= 0)
+        {
+            
+            anim.SetInteger("hp", ph.Hp);
+            timer -= Time.deltaTime;
+            if (timer<=0)
+            {
+                die = true;
+                anim.enabled = false;
+            }
+            
+            
+
+        }
+
+    }
 
     private States State
     {
         get { return (States)anim.GetInteger("state"); }
         set { anim.SetInteger("state", (int)value); }
+    }
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.name.Contains("Enemy"))
+        {
+            ph.Damage(1);
+        }
     }
 }
 
@@ -72,5 +119,6 @@ public enum States
 {
     idle,
     run,
-    jump
+    jump,
+    Die
 }
