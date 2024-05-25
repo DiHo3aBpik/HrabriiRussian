@@ -18,15 +18,18 @@ public class PlayerHp : MonoBehaviour
 
     void Update()
     {
-        slider.value = Hp;
-        if (Hp <= 0)
-        {
-            panel.SetActive(true);
-        }
-        if (Player.transform.position.y <= -38)
-        {
-            Hp = 0;
-        }
+
+            slider.value = Hp;
+            if (Hp <= 0)
+            {
+                panel.SetActive(true);
+            }
+            if (Player.transform.position.y <= -38)
+            {
+                Hp = 0;
+            }
+
+            
     }
 
     public void Damage(int damage)
