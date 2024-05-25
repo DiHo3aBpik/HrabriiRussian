@@ -778,7 +778,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -1133, y: 656.75}
+  m_AnchoredPosition: {x: -321.3999, y: 239.90002}
   m_SizeDelta: {x: 108.8777, y: 19.0626}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &271329506
@@ -7641,17 +7641,13 @@ Transform:
   m_GameObject: {fileID: 1140322882}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-<<<<<<< HEAD
-  m_LocalPosition: {x: -3.13, y: -0.94, z: -0.03791723}
-=======
-  m_LocalPosition: {x: -2.83, y: -1.06, z: -0.03791723}
->>>>>>> 7ed8490d3c14bc3c1848095cf7083b8e2d0fbde6
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1197262256}
-  - {fileID: 757792911}
   - {fileID: 154738848}
+  - {fileID: 757792911}
+  - {fileID: 1197262256}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1140322887
@@ -8880,6 +8876,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1816150563}
   - component: {fileID: 1816150565}
+  - component: {fileID: 1816150566}
   - component: {fileID: 1816150564}
   m_Layer: 5
   m_Name: Image
@@ -8905,7 +8902,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -986.6001, y: 654.85}
+  m_AnchoredPosition: {x: -175, y: 238}
   m_SizeDelta: {x: 29.7976, y: 29.755}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1816150564
@@ -8946,6 +8943,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1816150562}
   m_CullTransparentMesh: 1
+--- !u!114 &1816150566
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1816150562}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35910d5951383324eb09ca0ec7993006, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  coin: 0
+  countCoins: {fileID: 0}
 --- !u!1 &1838123345 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3887927795721637422, guid: 93f406faffbc44e41b613bfa6c2d72c2, type: 3}
