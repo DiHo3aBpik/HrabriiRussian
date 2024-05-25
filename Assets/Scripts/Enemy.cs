@@ -37,6 +37,8 @@ public class Enemy : MonoBehaviour
             if (transform.position.x >= startPosition.x + distance)
             {
                 movingRight = false;  // Меняем направление на левое
+                SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
+                spriteRenderer.flipX = !spriteRenderer.flipX;
             }
         }
         else
@@ -47,6 +49,8 @@ public class Enemy : MonoBehaviour
             if (transform.position.x <= startPosition.x - distance)
             {
                 movingRight = true;  // Меняем направление на правое
+                SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
+                spriteRenderer.flipX = !spriteRenderer.flipX;
             }
         }
     }

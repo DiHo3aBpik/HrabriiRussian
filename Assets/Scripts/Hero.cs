@@ -45,12 +45,17 @@ public class Hero : MonoBehaviour
                 Run();
             if (isGrounded && Input.GetButtonDown("Jump"))
                 Jump();
+           
+                
         }
         
         Die();
-        if (Input.GetKeyDown(KeyCode.Mouse0))
+        if (isGrounded && Input.GetKey(KeyCode.Mouse0))
         {
+            Attack();
             zoneatack.gameObject.transform.localPosition = new Vector3(1.1f,0.94f,0);
+            
+            
         }
         else
         {
@@ -60,6 +65,18 @@ public class Hero : MonoBehaviour
 
 
     }
+
+    private void Attack()
+    {
+        if (isGrounded) State = States.Attack;
+        AudioSource audioSource = GetComponent<AudioSource>();
+        if (audioSource != null)
+        {
+            audioSource.Play();
+        }
+
+    }
+
 
     private void Run()
     {
@@ -120,5 +137,6 @@ public enum States
     idle,
     run,
     jump,
+    Attack,
     Die
 }
